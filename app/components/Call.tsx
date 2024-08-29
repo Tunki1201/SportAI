@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DailyIframe from '@daily-co/daily-js';
 
 interface CallProps {
@@ -12,40 +12,43 @@ const CALL_OPTIONS = {
 
 const Call: React.FC<CallProps> = ({ room, setRoom }) => {
     const callRef = useRef<HTMLDivElement>(null);
-    const callFrame = useRef<any>(null); // Use useRef for the callFrame  
+    const [callFrames, setCallFrames] = useState<any[]>([]); // Use state to store multiple call frames
 
     useEffect(() => {
         const createAndJoinCall = async () => {
-            if (!callRef.current || callFrame.current || !room) return;
+            if (!callRef.current || !room) return;
 
+            // Create a new call frame
             const newCallFrame = DailyIframe.createFrame(callRef.current, CALL_OPTIONS);
-            callFrame.current = newCallFrame; // Store in the ref  
 
             try {
                 await newCallFrame.join({ url: room });
-            } catch (error) {
-                console.error("Error joining call:", error);
-                // Handle the error appropriately, e.g., display an error message  
-            }
 
-            newCallFrame.on('left-meeting', () => {
-                setRoom(null);
-                callFrame.current = null;
-                newCallFrame.destroy();
-            });
+                setCallFrames((prevFrames) => [...prevFrames, newCallFrame]); // Add new call frame to the array
+
+                // Event listener for when the participant leaves
+                newCallFrame.on('left-meeting', () => {
+                    setRoom(null);
+                    setCallFrames((prevFrames) => prevFrames.filter((frame) => frame !== newCallFrame)); // Remove call frame from the array
+                    newCallFrame.destroy();
+                });
+            } catch (error) {
+                console.error('Error joining call:', error);
+                // Handle the error appropriately, e.g., display an error message
+            }
         };
 
         createAndJoinCall();
 
-        // Cleanup  
+        // Cleanup
         return () => {
-            if (callFrame.current) {
-                callFrame.current.leave();
-                callFrame.current.destroy();
-                callFrame.current = null;
-            }
+            callFrames.forEach((frame) => {
+                frame.leave();
+                frame.destroy();
+            });
+            setCallFrames([]);
         };
-    }, [room]); // Only re-run the effect when the `room` changes  
+    }, [room]); // Only re-run the effect when the `room` changes
 
     return <div ref={callRef} className='w-full h-[800px] rounded-xl' />;
 };

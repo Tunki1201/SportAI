@@ -12,7 +12,7 @@ export const POST = async (req: Request) => { // Note: `req` is now of type `Req
         'x-api-key': process.env.NEXT_PUBLIC_API_KEY || '',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ replica_id: process.env.NEXT_PUBLIC_REPLICA_ID,  persona_id:process.env.NEXT_PUBLIC_PERSONA_ID}),
+      body: JSON.stringify({ replica_id: process.env.NEXT_PUBLIC_REPLICA_ID, persona_id: process.env.NEXT_PUBLIC_PERSONA_ID, custom_greeting: process.env.NEXT_PUBLIC_CUSTOM_GREETING }),
     };
 
     const response = await fetch('https://tavusapi.com/v2/conversations', options);
