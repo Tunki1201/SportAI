@@ -11,21 +11,22 @@ export default function Home() {
 
       {room ? (
         <div className="flex w-full">
-          <div className="flex flex-col items-center justify-start" style={{position:'absolute', top:'6rem', left:'4rem'}}>
-            <span className="text-white ltr:first-line:" style={{ fontSize: '24px' }}>
-              Leicester vs Tottenham Premier League match
-            </span>
-            <span className="text-white" style={{ fontSize: '18px' }}>
-              1&nbsp;:&nbsp;1
-            </span>
-            <iframe width="520" height="300" src="https://www.youtube.com/embed/AnWkefmi08s" frameBorder="0" allowFullScreen></iframe>
-
+          <div
+            className="flex flex-col items-center justify-start absolute lg:top-24 lg:left-16 md:top-20 md:left-12 sm:top-16 sm:left-8 top-12 left-4"
+          >
+            <span className="text-white text-2xl">Leicester vs Tottenham Premier League match</span>
+            <span className="text-white text-lg">1&nbsp;:&nbsp;1</span>
+            <iframe
+              width="520"
+              height="300"
+              src="https://www.youtube.com/embed/AnWkefmi08s"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
           </div>
-          <Call
-            room={room}
-            setRoom={setRoom}
-          />
+          <Call room={room} setRoom={setRoom} />
         </div>
+
       ) : (
         <div className="flex flex-col items-center justify-center w-2/4 rounded-xl bg-white px-24 pt-12 pb-24">
           <div className="flex items-center justify-center mb-12">
