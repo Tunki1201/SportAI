@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import DailyIframe from '@daily-co/daily-js';
-
+import Image from 'next/image';
+import IntroductionImage from '@/public/images/res.png';
 interface CallProps {
     room: string | null;
     setRoom: (room: string | null) => void;
@@ -72,12 +73,13 @@ const Call: React.FC<CallProps> = ({ room, setRoom }) => {
     return (
         <div className="flex w-full">
             {
-                isShowVideo && <div className="flex flex-col items-center justify-start absolute lg:top-24 lg:left-16 md:top-20 md:left-12 sm:top-16 sm:left-8 top-12 left-4"
+                isShowVideo && <div className="flex flex-col w-[20%] items-center justify-start absolute lg:top-24 lg:left-16 md:top-20 md:left-12 sm:top-16 sm:left-8 top-12 left-4"
                 >
-                    <span className="text-white text-2xl overflow-hidden border-r-2 border-white whitespace-nowrap animate-typing">
+                    {/* <span className="text-white text-2xl overflow-hidden border-r-2 border-white whitespace-nowrap animate-typing">
                         Leicester vs Tottenham
                     </span>
-                    <span className="text-white text-lg">1&nbsp;:&nbsp;1</span>
+                    <span className="text-white text-lg">1&nbsp;:&nbsp;1</span> */}
+                    <Image src={IntroductionImage} alt='image' width={100} height={30} className="relative w-full max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]"/>
                     <div className="relative w-full pb-[56.25%] max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]">
                         <iframe
                             src="https://www.youtube.com/embed/AnWkefmi08s?enablejsapi=1"

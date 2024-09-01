@@ -27,9 +27,9 @@ const Create: React.FC<HomeProps> = ({ setRoom }) => {
     }, [setRoom]);
 
     return (
-        <div className='w-full'>
+        <div className='w-full flex items-center justify-center'>
             <CreateRoomButton setRoom={setRoom} isValidRoom={isValidRoom} />
-            <Form className='w-full'>
+            {/* <Form className='w-full'>
                 <Input
                     ref={roomRef}
                     type="text"
@@ -41,7 +41,7 @@ const Create: React.FC<HomeProps> = ({ setRoom }) => {
             </Form>
             <Button onClick={joinCall} disabled={!isValidRoom}>
                 Join room
-            </Button>
+            </Button> */}
         </div>
     );
 };
