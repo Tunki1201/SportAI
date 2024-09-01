@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import DailyIframe from '@daily-co/daily-js';
 import Image from 'next/image';
-import IntroductionImage from '@/public/images/res.png';
+import IntroductionImage from '@/public/images/2.png';
 interface CallProps {
     room: string | null;
     setRoom: (room: string | null) => void;
