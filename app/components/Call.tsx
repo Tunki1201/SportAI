@@ -79,10 +79,10 @@ const Call: React.FC<CallProps> = ({ room, setRoom }) => {
                         Leicester vs Tottenham
                     </span>
                     <span className="text-white text-lg">1&nbsp;:&nbsp;1</span> */}
-                    <Image src={IntroductionImage} alt='image' className="relative w-full max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]"/>
+                    <Image src={IntroductionImage} alt='image' className="relative w-full max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]" />
                     <div className="relative w-full pb-[56.25%] max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]">
                         <iframe
-                            src="https://www.youtube.com/embed/AnWkefmi08s?enablejsapi=1"
+                            src="https://www.youtube.com/embed/AnWkefmi08s?enablejsapi=1&autoplay=1&mute=1"
                             className="absolute top-0 left-0 w-full h-full"
                             frameBorder="0"
                             allowFullScreen
