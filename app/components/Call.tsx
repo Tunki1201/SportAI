@@ -81,12 +81,19 @@ const Call: React.FC<CallProps> = ({ room, setRoom }) => {
                     <span className="text-white text-lg">1&nbsp;:&nbsp;1</span> */}
                     <Image src={IntroductionImage} alt='image' className="relative w-full max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]" />
                     <div className="relative w-full pb-[56.25%] max-w-[120px] sm:max-w-[180px] md:max-w-[240px] lg:max-w-[420px] xl:max-w-[480px]">
-                        <iframe
-                            src="https://www.youtube.com/OMSplpXFXLk?autoplay=1&mute=1&si=NWZx3ZVzikI9YCN1"
-                            className="absolute top-0 left-0 w-full h-full"
-                            frameBorder="0"
-                            allowFullScreen
-                        ></iframe>
+                        <video
+                            className="bg-white shadow-2xl rounded-[13px] border border-base-200"
+                            playsInline
+                            loop
+                            autoPlay
+                            muted // Ensures video autoplays in most browsers
+                            src="/video/sport.mp4"
+                            width="100%"
+                            height="100%"
+                            style={{ visibility: 'visible' }}
+                        >
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             }
